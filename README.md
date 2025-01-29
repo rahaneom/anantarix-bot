@@ -35,3 +35,7 @@ Run the app:  npm start
 
 
 ### If you'd like to contribute to Anantarix, feel free to fork the repository and submit a pull request. 
+
+
+## 📸 Screenshots
+
