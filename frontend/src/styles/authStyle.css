@@ -1,0 +1,50 @@
+.login-form {
+    box-shadow: 0px 0px 60px rgba(149, 250, 189, 0.608);
+    color: #e8f6fe;
+    animation: formAnimation 10s ease infinite;
+    border-radius: 5px;
+  }
+  
+  .input-box {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid #23fdfd;
+    border-left: 0.1px solid #19525254;
+    border-top: 0.1px solid #19525248;
+    transition: all 0.2s ease-in-out;
+    border-radius: 2px;
+    border-radius: 8px;
+    border-bottom: 2.5px solid #80f0f0;
+  }
+  .input-box:focus {
+    border-left: 0.1px solid #1952528f;
+    border-top: 0.4px solid #1952528b;
+  }
+  
+  .submit-btn {
+    background-color: #039e9e;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    padding: 10px 15px;
+  }
+  .submit-btn:hover {
+    border-radius: 0px;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: #047474;
+  }
+  
+  @keyframes formAnimation {
+    0% {
+      box-shadow: 0px 0px 30px rgba(118, 248, 170, 0.608);
+    }
+    50% {
+      box-shadow: 0px 0px 50px rgba(90, 228, 146, 0.608);
+    }
+    100% {
+      box-shadow: 0px 0px 30px rgba(118, 248, 170, 0.608);
+    }
+  }
+  

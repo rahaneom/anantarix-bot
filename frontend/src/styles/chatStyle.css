@@ -1,0 +1,77 @@
+.chat-icon {
+  background: #36676c9c;
+  margin-right: 1%;
+}
+
+.user-question {
+  letter-spacing: 0.1rem;
+  background-color: #04747422;
+  border-radius: 5px;
+}
+
+.answer-box {
+  overflow-y: auto;
+  border: 0.8px solid #0e87878b;
+  background-color: #04747451;
+  font-family: "Orbitron", serif;
+  border-bottom-right-radius: 3rem;
+  border-bottom-left-radius: 1.2rem;
+  border-top-right-radius: 3rem;
+  letter-spacing: 0.1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.wrap-text {
+  word-wrap: break-word;
+  overflow-x: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.send-btn {
+  border-top-left-radius: 25%;
+  border-bottom-right-radius: 30%;
+  background-color: #036467a0;
+  transition: all 0.3s ease;
+  font-size: 1.7rem;
+  border: 0.8px solid #0e87878b;
+  /* margin-top: 2rem; */
+  margin: 2rem 1rem 0rem 2rem;
+}
+.send-btn:hover {
+  box-shadow: 0px 0px 60px rgba(149, 250, 189, 0.608);
+}
+.send-icon {
+  transition: transform 0.5s ease;
+}
+.send-btn:hover .send-icon {
+  transform: rotate(-30deg);
+}
+
+.user-input-box {
+  background: linear-gradient(90deg, #26574fa7, #10706d54, #0e2e2e);
+  background-size: 400% 400%;
+  transition: all 2s ease-in;
+  color: white;
+  border: 0.8px solid #0e87878b;
+  margin-top: 2rem;
+  box-shadow: 0px 0px 20px rgba(149, 250, 189, 0.386);
+}
+.user-input-box:hover {
+  box-shadow: 0px 0px 40px rgba(149, 250, 189, 0.386);
+  animation: shimmer 20s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

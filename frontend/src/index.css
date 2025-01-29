@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: white;
+  font-family: chakra-petch-medium !important;
+  letter-spacing: 0.1rem;
+}
+
+.gradient-bg {
+  background: linear-gradient(120deg, #151c20ec, #203a43, #0e0e0e);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+canvas.particle-bg {
+  position: fixed;
+  z-index: -1;
+}
+
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scroll-padding: 3rem;
+  scroll-behavior: smooth;
+  scrollbar-arrow-color: aquamarine;
+  scrollbar-color: rgb(8, 142, 138) rgba(188, 250, 250, 0.159);
+}
