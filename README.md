@@ -24,14 +24,21 @@ Instant Response: Powered by the Gemini API, Anantarix offers near-instantaneous
 
 
 ## 🚀 Installation
-To get Anantarix up and running locally, follow these steps:
+To get Anantarix up and running locally
 
-Clone the repository:   git clone https://github.com/rahaneom/anantarix-bot.git
+1. Clone the repository:  
+```
+git clone https://github.com/rahaneom/anantarix-bot.git
+```
 
-Navigate into the project folder:  cd anantarix-bot
+2. Navigate into the project folder:  cd anantarix-bot
+```
 Install dependencies:   npm install
+```
 
-Run the app:  npm start
-
+3. Run the app:
+```
+ npm start
+```
 
 ### If you'd like to contribute to Anantarix, feel free to fork the repository and submit a pull request. 
