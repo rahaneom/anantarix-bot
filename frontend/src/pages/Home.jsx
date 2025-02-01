@@ -6,14 +6,18 @@ import { ChatData } from "../context/ChatContext";
 import { FiUser } from "react-icons/fi";
 import { IoMdSend } from "react-icons/io";
 import { FaOm } from "react-icons/fa";
+import { FaRegClipboard } from "react-icons/fa6"; // Copy icon
+import { LuCopy } from "react-icons/lu";
+import { IoCheckmarkDone } from "react-icons/io5";
 import "../index.css";
 import ParticlesBackground from "../styles/ParticlesBackground";
 import ReactMarkdown from "react-markdown";
-import '../styles/chatStyle.css'
+import "../styles/chatStyle.css";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [placeholder, setPlaceholder] = useState("Ask me anything...");
+  const [copiedIndex, setCopiedIndex] = useState(null); // Track copied answer index
 
   useEffect(() => {
     const text = "Ask me anything...";
@@ -28,7 +32,7 @@ const Home = () => {
       }
     }, 150);
 
-    return () => clearInterval(typingInterval); 
+    return () => clearInterval(typingInterval);
   }, []);
 
   const toggleSidebar = () => {
@@ -61,6 +65,17 @@ const Home = () => {
     }
   }, [messages]);
 
+  // Copy to Clipboard function
+  const copyToClipboard = (text, index) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+
+    // Reset copied state after 2 seconds
+    setTimeout(() => {
+      setCopiedIndex(null);
+    }, 2000);
+  };
+
   return (
     <div className="relative">
       <div className="gradient-bg"></div>
@@ -86,27 +101,42 @@ const Home = () => {
               <LoadingBig />
             ) : (
               <div
-                className="flex-1 p-6 max-h-[500px] max-w-[100%]   overflow-y-auto overflow-x-hidden mb-20 md:mb-0 thin-scrollbar"
+                className="flex-1 p-6 max-h-[500px] max-w-[100%] overflow-y-auto overflow-x-hidden mb-20 md:mb-0 thin-scrollbar"
                 ref={messagecontainerRef}
               >
                 {messages && messages.length > 0 ? (
                   messages.map((e, i) => (
-                    <div key={i} className="my-4 ">
+                    <div key={i} className="my-4">
+                      {/* User Question */}
                       <div className="flex gap-1 p-5 mb-4 tracking-wide text-white user-question">
                         <div className="h-10 p-2 text-[1.5rem] chat-icon rounded-full ">
                           <FiUser />
                         </div>
-
                         <p className="mt-2 ml-[0.3rem]">{e.question}</p>
                       </div>
-                      <div className="flex items-start gap-1 p-5 answer-box text-[0.85rem]">
+
+                      {/* AI Answer */}
+                      <div className="flex items-start gap-1 p-5 answer-box text-[0.85rem] relative">
                         <div className="p-2 mr-2 text-[1.45rem] chat-icon rounded-full h-15 text-green">
                           <FaOm />
                         </div>
 
-                        <ReactMarkdown className="mt-2 break-words whitespace-pre-wrap wrap-text">
+                        <ReactMarkdown className="flex-1 mt-2 break-words whitespace-pre-wrap wrap-text">
                           {e.answer}
                         </ReactMarkdown>
+
+                        {/* Copy Button */}
+                        <button
+                          className={`p-2 ml-3 text-lg text-white transition-all duration-200 rounded-lg ${
+                            copiedIndex === i
+                              ? "bg-green-800"
+                              : "hover:bg-green-400"
+                          }`}
+                          onClick={() => copyToClipboard(e.answer, i)}
+                          title="Copy Answer"
+                        >
+                          {copiedIndex === i ? <IoCheckmarkDone /> : <LuCopy />}
+                        </button>
                       </div>
                     </div>
                   ))
@@ -125,7 +155,7 @@ const Home = () => {
         {chats && chats.length === 0 ? (
           ""
         ) : (
-          <div className="fixed bottom-0 right-0 left-auto w-full p-4  md:w-[75%]">
+          <div className="fixed bottom-0 right-0 left-auto w-full p-4 md:w-[75%]">
             <form
               className="flex items-center justify-center"
               onSubmit={submitHandler}
@@ -140,7 +170,7 @@ const Home = () => {
               />
 
               <button className="p-4 ml-5 text-2xl text-white rounded history-bg send-btn btn-radius">
-                <IoMdSend className=" send-icon" />
+                <IoMdSend className="send-icon" />
               </button>
             </form>
           </div>
