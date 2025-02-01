@@ -17,16 +17,23 @@ import "../styles/chatStyle.css";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [placeholder, setPlaceholder] = useState("Ask me anything...");
-  const [copiedIndex, setCopiedIndex] = useState(null); 
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   // Playing divine music on page load
   useEffect(() => {
-    const audio = new Audio("../../public/divine-music.mp3");
-    audio.loop = true;
-    audio.volume = 0.3;
-    audio.play(); 
-  }, []);
+    const playMusic = () => {
+      const audio = new Audio("/divine-music.mp3");
+      audio.volume = 0.2; 
+      audio.play();
+    };
 
+    // Play music on first user interaction or after login
+    document.body.addEventListener("click", playMusic);
+
+    return () => {
+      document.body.removeEventListener("click", playMusic);
+    };
+  }, []);
 
   useEffect(() => {
     const text = "Ask me anything...";
