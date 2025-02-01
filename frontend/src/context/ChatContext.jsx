@@ -80,7 +80,7 @@ export const ChatProvider = ({ children }) => {
         `${server}/api/chat/new`,
         {},
         {
-          headers: {
+          headers: {  
             token: localStorage.getItem("token"),
           },
         }
@@ -154,7 +154,7 @@ export const ChatProvider = ({ children }) => {
         loading,
         setLoading,
         deleteChat,
-        fetchChats
+        fetchChats,
       }}
     >
       {children}
